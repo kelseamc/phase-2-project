@@ -1,2 +1,0 @@
-class Alcohol < ApplicationRecord
-end

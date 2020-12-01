@@ -1,0 +1,7 @@
+<h1> <%= @user.name %> </h1> 
+
+<h2> Age: <%= @user.age %> </h2> 
+
+<h4> Creations: <% @user.created_recipes.each do |recipe|%> </h4> 
+    <li> <%= link_to recipe.title, recipe_path(recipe) %> </li>
+<% end %>

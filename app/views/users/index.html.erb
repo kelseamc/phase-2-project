@@ -1,0 +1,6 @@
+<h1>User Directory</h1>
+
+<% @users.each do |user|%>
+   <h2><%= link_to user.name, user_path(user) %></h2>
+    <p>Total Recipes: <%= user.created_recipes.count %></p>
+ <% end %>
