@@ -10,6 +10,8 @@ require 'faker'
 
 Recipe.destroy_all
 User.destroy_all
+Ingredient.destroy_all
+RecipeIngredient.destroy_all
 
 20.times do
 User.create(name: Faker::Name.name, age: Faker::Number.within(range: 21..100))

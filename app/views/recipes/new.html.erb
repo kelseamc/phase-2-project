@@ -1,0 +1,25 @@
+<h1> Create A Recipe </h1> 
+
+
+<%= form_for  @recipe do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %> <br>
+    <p>Please Enter Image URL</p>
+    <%= f.label :image %>
+    <%= f.text_field :image %> <br>
+
+    <%= f.hidden_field :user_id, value: 1  %>
+
+  <%= f.fields_for :ingredients do |ingredients_form| %>
+  <%= ingredients_form.label :ingredient_id %>
+  <%= ingredients_form.collection_select :ingredient_id, Ingredient.all, :id, :name %>
+
+
+
+   <% end %>
+
+<% end %>
+ 
+
+
+
