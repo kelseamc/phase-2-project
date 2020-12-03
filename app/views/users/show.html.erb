@@ -5,3 +5,9 @@
 <h4> Creations: <% @user.created_recipes.each do |recipe|%> </h4> 
     <li> <%= link_to recipe.title, recipe_path(recipe) %> </li>
 <% end %>
+
+<h4>Liked Recipes</h4>
+<% @user.recipes.each do |recipe| %>
+    <%= recipe.title %> <br>
+  
+<% end %>

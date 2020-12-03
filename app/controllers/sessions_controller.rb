@@ -1,11 +1,6 @@
 class SessionsController < ApplicationController
-
-    # def reset_view_count
-    #     # cookies[:view_count] = nil
-    #     cookies.delete(:view_count)
-        
-    #     redirect_back fallback_location: planets_path
-    #   end 
+  skip_before_action :authorized, only: [:new, :login]
+   
     
       def logout
         cookies.delete(:user_id)
@@ -20,7 +15,7 @@ class SessionsController < ApplicationController
     
         if user && user.authenticate(params[:session][:password])
           cookies[:user_id] = user.id
-          redirect_to users_path
+          redirect_to recipes_path
         else
           flash[:errors] = "Username or Password does not match" 
           redirect_to new_login_path

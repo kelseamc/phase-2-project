@@ -1,13 +1,10 @@
+
+
 <h1> <%= @recipe.title %> <h1> 
+<h6>Likes: <%= @recipe.likes.count %> </h6>
 <p> Creator: <%= link_to @recipe.user.name, user_path(@recipe.user.id)%></p>
 <h3> Ingredients: <% @recipe.recipe_ingredients.each do |i| %> </h3>
-   <li> <%= i.measurement %> <%= link_to i.ingredient.name, ingredient_path(i.ingredient_id) %> </li> 
-   <%end%> 
-
-
-
-<%= form_for @likes do |f| %>
-    <%= f.hidden_field :recipe_id, value: @recipe.id %>
-    <%= f.hidden_field :user_id, value: cookies[:user_id] %>
-    <%= f.submit %>
+   <li> <%= i.measurement %> <%= link_to i.ingredient.name, ingredient_path(i.ingredient_id) %> </li> <br>
 <%end%> 
+ 
+

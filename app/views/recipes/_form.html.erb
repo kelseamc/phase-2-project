@@ -1,19 +1,21 @@
-<%= form_for @recipe do |f| %>
-    <div class="form-input">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
 
-    <div class="form-input">
-      <%= f.label :image %>
-      <%= f.text_field :image %>
-    </div>
-  
-    <div class="form-input">
-      <%= f.hidden_field :user_id, value: cookies[:user_id] %>
-    </div>
-  
-    <%= f.submit class: "form-btn" %>
+  <%= form_for  @recipe do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %> <br>
+    <p>Please Enter Image URL</p> 
+    <%= f.label :image %>
+    <%= f.text_field :image %> <br>
+
+    <%= f.hidden_field :user_id, value: @current_user.id  %>
+
+  <%= f.fields_for :recipe_ingredients do |ingredients_form| %>
+  <%= ingredients_form.label :ingredient_id %>
+  <%= ingredients_form.collection_select :ingredient_id, Ingredient.all, :id, :name %>
   <% end %>
+
+  <%= f.submit %>
+
+<% end %>
+
 
 

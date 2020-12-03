@@ -1,0 +1,23 @@
+<h1> <%= @current_user.name %> </h1> 
+<h1>Hello</h1>
+<h2> Age: <%= @current_user.age %> </h2> 
+
+<h4> Creations: <% @current_user.created_recipes.each do |recipe|%> </h4> 
+    <li> <%= link_to recipe.title, recipe_path(recipe) %> <%=  button_to 'Edit', edit_recipe_path(recipe), method: :get %>  <%=  button_to 'Delete', recipe_path(recipe), method: :delete %>  </li>
+    
+   
+
+<% end %>
+
+
+<h4>Liked Recipes</h4>
+<% @current_user.recipes.each do |recipe| %>
+    <%= recipe.title %> <br>
+  
+<% end %>
+
+
+
+
+ 
+    

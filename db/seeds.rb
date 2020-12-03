@@ -14,7 +14,7 @@ Ingredient.destroy_all
 RecipeIngredient.destroy_all
 
 20.times do
-User.create(name: Faker::Name.name, age: Faker::Number.within(range: 21..100))
+User.create(name: Faker::Name.name, age: Faker::Number.within(range: 21..100), password_digest: Faker::Alphanumeric.alphanumeric(number: 10))
 end
 
 20.times do 
@@ -26,7 +26,7 @@ api_data_cocktail = JSON.parse(api_resp_cocktail)
 
 api_data_cocktail["drinks"].each { |drink| Recipe.create(user_id: User.all.sample.id, title: drink["strDrink"], image: drink["strDrinkThumb"], api_id: drink["idDrink"] )}
 
-20.times do 
+50.times do 
     RecipeIngredient.create(ingredient_id: Ingredient.all.sample.id, recipe_id: Recipe.all.sample.id, measurement: Faker::Food.measurement)
 end
 

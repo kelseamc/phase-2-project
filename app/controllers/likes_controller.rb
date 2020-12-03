@@ -1,15 +1,10 @@
 class LikesController < ApplicationController
 
-    def new
-        @like = Like.new 
-    end
-
     def create
-        @new_like = Like.create(user_id: @like[:user_id], recipe_id: @like[:recipe_id])
+        # @user = User.find(cookies[:user_id])
+        @recipe = Recipe.find(params[:recipe_id])
+        @new_like = Like.create(user_id: @current_user.id, recipe_id: @recipe.id)
+        redirect_to recipe_path(@recipe.id)
     end
-
-
-
-
 
 end
