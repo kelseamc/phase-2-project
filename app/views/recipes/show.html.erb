@@ -1,25 +1,31 @@
-
-
+<br>
+<br>
+<br>
 
  
 
-<div class="show_container">
+<div class = "show_container">
+  <div class = "show-tile1">
+    <h1 id = "Heading"> <%= @recipe.title %> <h1> 
+    <h4 id = "Heading"> Creator: <%= link_to @recipe.user.name, user_path(@recipe.user.id)%></h4>
+  </div>
+  <div class = "show-tile1">
+    <div id = "likes">
+      <h5>Likes: <%= @recipe.likes.count %> </h5> 
+      <%= button_to 'Like', {:controller => "likes", :action => "create", :recipe_id => @recipe.id},  method: :post, class: "button1" %>
 
-<h1 id = "title"> <%= @recipe.title %> <h1> <br>
-<h4> Creator: <%= link_to @recipe.user.name, user_path(@recipe.user.id)%></h4>
+    </div>
+  </div>
+  <div class = "show-tile1">
 
-<h6>Likes: <%= @recipe.likes.count %> </h6> 
-<%= button_to 'Like', {:controller => "likes", :action => "create", :recipe_id => @recipe.id},  method: :post, class: "button1" %>
+      <img class = "show-img" src="<%= @recipe.image %>"  width="200" height="300" >
 
-
-
-
-<div class="container">
-  <img class = "show-img" src="<%= @recipe.image %>"  width="200" height="300" >
-  <h3 id = "ingred-header">Ingredients: </h3>
-    <ul class = "list"> <% @recipe.recipe_ingredients.each do |i| %> 
-   <li class = "item"> <%= i.measurement %> <%= link_to i.ingredient.name, ingredient_path(i.ingredient_id) %> </li> <br>
-   </ul>
-<%end%> 
-
-</div>   
+  </div>
+  <div class = "show-tile1">
+    <h2 id = "ingred-header">Ingredients: </h2>
+      <ul class = "list"> <% @recipe.recipe_ingredients.each do |i| %> 
+    <li class = "item"> <%= i.measurement %> <%= link_to i.ingredient.name, ingredient_path(i.ingredient_id) %> </li> <br>
+    </ul>
+  <%end%> 
+  </div>  
+</div>

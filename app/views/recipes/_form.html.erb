@@ -1,14 +1,24 @@
 
+  <div class = "form">
   <%= form_for  @recipe do |f| %>
+    <div class = "form-input">
     <%= f.label :title %>
     <%= f.text_field :title %> <br>
-    <p>Please Enter Image URL</p> 
-    <%= f.label :image %>
-    <%= f.text_field :image %> <br>
+    <br>
+    <br>
+    </div>
 
+    <div class = "form-input">
+   
+     <p>Please Enter Image URL: <%# f.label :image %><%= f.text_field :image %></p>
+     
+    <br>
+    <br>
+     </div>
     <%= f.hidden_field :user_id, value: @current_user.id  %>
 
   <%= f.fields_for :recipe_ingredients do |ff| %>
+  <div class = "form-input">
   <%= ff.label :ingredient_id %> 
   <%= ff.collection_select :ingredient_id, Ingredient.all, :id, :name %> 
   <%= ff.label :measurement %>
@@ -16,10 +26,12 @@
   <%# ff.collection_check_boxes :ingredient_id, Ingredient.all, :id, :name %> <br>
 
   <% end %>
-
-  <%= f.submit %>
+   </div>
+  <%= f.submit class: "btn" %>
 
 <% end %>
+</div>
 
 
 
+  

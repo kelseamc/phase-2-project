@@ -1,18 +1,20 @@
-<h1> Welcome You Alcoholic! </h1> 
-
-
-
+<br>
+<br>
+<div class = "form">
+<h1 id = "Heading"> Welcome You Alcoholic! </h1> 
 
 <%= form_for :session, url: login_path do |f| %>
     
+      <div class = "form-input">
       <%= f.label :name %>
       <%= f.text_field :name %>
-  
-
-    
+      </div>
+      <br>
+      <div class = "from-input">
         <%= f.label :password %>
         <%= f.text_field :password %>
-   
-
-    <%= f.submit %>
+      </div>
+      <br>
+    <%= f.submit class: "btn" %>
     <%end%> 
+</div>

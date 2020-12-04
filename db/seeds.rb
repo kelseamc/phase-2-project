@@ -14,7 +14,7 @@ Ingredient.destroy_all
 RecipeIngredient.destroy_all
 
 20.times do
-User.create(name: Faker::Name.name, age: Faker::Number.within(range: 21..100), password_digest: Faker::Alphanumeric.alphanumeric(number: 10))
+User.create(name: Faker::Name.name, age: Faker::Number.within(range: 21..100), password_digest: Faker::Alphanumeric.alphanumeric(number: 10), image: Faker::Avatar.image)
 end
 
 20.times do 

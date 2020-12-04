@@ -1,13 +1,24 @@
+<div class = "page-container">
+
+<div class = "profile-container1">
 <h1> <%= @user.name %> </h1> 
 
 <h2> Age: <%= @user.age %> </h2> 
 
+<img src="<%= @user.image %>" >
+</div>
+
+<div class = "profile-container2">
 <h4> Creations: <% @user.created_recipes.each do |recipe|%> </h4> 
+    <img src="<%= recipe.image %>" width="250" height="300">
     <li> <%= link_to recipe.title, recipe_path(recipe) %> </li>
 <% end %>
-
+</div>
+<div class = "profile-container2">
 <h4>Liked Recipes</h4>
 <% @user.recipes.each do |recipe| %>
     <%= recipe.title %> <br>
-  
+  </div>
 <% end %>
+
+</div>

@@ -1,14 +1,26 @@
-<h1>Sign Up</h1>
+<h1 id = "Heading">Sign Up</h1>
+
+<div class = "form">
 
 <%= form_for @user do |f| %>
+    <div class = 'form-input'>
     <%= f.label :name %>
-    <%= f.text_field :name %> <br>
-
+    <%= f.text_field :name %> 
+    </div>
+    <br>
+    <div class = 'form-input'>
     <%= f.label :age %>
-    <%= f.text_field :age %> <br>
-
+    <%= f.text_field :age %> 
+    </div> 
+    <br>
+    <div class = 'form-input'>
     <%= f.label :password %>
-    <%= f.password_field :password %> <br>
+    <%= f.password_field :password %> 
+    </div>
+    <br>
+    <%= f.hidden_field :image, value: "https://robohash.org/#{Faker::Avatar.image}.png/?set=set2" %>
 
-    <%= f.submit %>
+    <%= f.submit class: "btn" %>
     <%end%> 
+
+ </div> 

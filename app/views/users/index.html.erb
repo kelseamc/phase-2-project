@@ -1,6 +1,16 @@
-<h1>User Directory</h1>
+<h1 id = "Heading" >User Directory</h1>
+
+<div class='index-container'>
 
 <% @users.each do |user|%>
+   <div class = "index-tile">
    <h2><%= link_to user.name, user_path(user) %></h2>
-    <p>Total Recipes: <%= user.created_recipes.count %></p>
+    <p >Total Recipes: <%= user.created_recipes.count %></p>
+    <img class = "index-img" src="<%= user.image %>" >
+ </div> 
  <% end %>
+ </div>
+
+
+
+
