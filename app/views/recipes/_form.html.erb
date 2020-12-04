@@ -8,9 +8,13 @@
 
     <%= f.hidden_field :user_id, value: @current_user.id  %>
 
-  <%= f.fields_for :recipe_ingredients do |ingredients_form| %>
-  <%= ingredients_form.label :ingredient_id %>
-  <%= ingredients_form.collection_select :ingredient_id, Ingredient.all, :id, :name %>
+  <%= f.fields_for :recipe_ingredients do |ff| %>
+  <%= ff.label :ingredient_id %> 
+  <%= ff.collection_select :ingredient_id, Ingredient.all, :id, :name %> 
+  <%= ff.label :measurement %>
+  <%= ff.text_field :measurement %><br>
+  <%# ff.collection_check_boxes :ingredient_id, Ingredient.all, :id, :name %> <br>
+
   <% end %>
 
   <%= f.submit %>

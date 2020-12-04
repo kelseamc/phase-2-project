@@ -1,6 +1,17 @@
-<h1>All Recipes</h1>
+
+<h1 id = 'Heading' >All Recipes</h1>
+
+
+<div class='index-container'>
+
 
 <% @recipes.each do |recipe|%>
-    <%= link_to recipe.title, recipe_path(recipe) %>
-    <img src="<%= recipe.image %>" >
+    <div class='index-tile'>
+    <%= link_to recipe.title, recipe_path(recipe) %> <br>
+    <img class = "index-img" src="<%= recipe.image%>" >
+    </div>
 <% end %>
+</div> 
+
+
+

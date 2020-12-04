@@ -28,8 +28,10 @@ class RecipesController < ApplicationController
     end 
 
     def create
+        byebug
         @recipe = Recipe.create(recipe_params)
         redirect_to recipe_path(@recipe)
+        
     end
 
 
@@ -56,7 +58,7 @@ class RecipesController < ApplicationController
     private
 
     def recipe_params
-        params.require(:recipe).permit(:title, :user_id, :image, :api_id, recipe_ingredients_attributes: [:ingredient_id])
+        params.require(:recipe).permit(:title, :user_id, :image, :api_id, recipe_ingredients_attributes: [:ingredient_id, :measurement])
     end
 
  end
