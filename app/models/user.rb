@@ -5,17 +5,8 @@ class User < ApplicationRecord
 
     has_secure_password 
 
+    validates :age, numericality: {greater_than_or_equal_to: 21}
 
-    # def user_name_and_name 
-    #     "#{self.name} || #{self.user_name}"
-    #   end 
-
-# def password=(user_input)
-#     hashed_password = BCrypt::Password.create(user_input)
-#     self.password_digest = hashed_password
-#   end 
-
-#   def password 
-#   end 
+    # validates_numericality_of :stock_qty, :greater_than_or_equal_to => 0
     
 end

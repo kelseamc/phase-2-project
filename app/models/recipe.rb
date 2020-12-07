@@ -7,6 +7,18 @@ class Recipe < ApplicationRecord
     
     accepts_nested_attributes_for :recipe_ingredients
 
+    def self.search(search)
+        if search
+            ingredient = Ingredient.find_by(name: search)
+            if ingredient
+               ingredient.recipes
+            else
+                Recipe.all
+            end
+        else
+            Recipe.all
+        end
+    end
 
 end
 

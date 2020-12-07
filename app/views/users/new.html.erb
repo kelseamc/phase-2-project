@@ -2,6 +2,12 @@
 
 <div class = "form">
 
+<% if flash[:errors] %>
+    <% flash[:errors].each do |error|%>
+        <%= error %>
+    <% end %>
+<% end %>
+
 <%= form_for @user do |f| %>
     <div class = 'form-input'>
     <%= f.label :name %>

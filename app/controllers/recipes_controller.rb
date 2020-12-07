@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
     skip_before_action :authorized, only: [:index]
 
     def index
-        @recipes = Recipe.all 
+        @recipes = Recipe.search(params[:search])
     end
 
 
@@ -13,24 +13,27 @@ class RecipesController < ApplicationController
 
     def edit 
         @recipe = Recipe.find(params[:id])
+        
         if @recipe.user.id == @current_user.id
             render :edit
         else
              redirect_to recipe_path(@recipe) 
              flash[:error] = 'You can only edit your own recipe!'
-        end 
+        end  
       
     end 
 
     def new 
         @recipe = Recipe.new 
-        3.times {@recipe.recipe_ingredients.build}
+       
+        params[:ingredient_count].to_i.times {@recipe.recipe_ingredients.build}
     end 
 
     def create
-        byebug
+        
         @recipe = Recipe.create(recipe_params)
-        redirect_to recipe_path(@recipe)
+        
+        redirect_to recipe_path(@recipe.id)
         
     end
 
@@ -39,7 +42,7 @@ class RecipesController < ApplicationController
         @recipe = Recipe.find(params[:id])
         if @recipe.user.id == @current_user.id
             @recipe.destroy 
-            redirect_to user_path(@current_user)
+            redirect_to profile_path(@current_user)
         else
              redirect_to recipe_path(@recipe) 
              flash[:error] = 'You can only delete your own recipe!'

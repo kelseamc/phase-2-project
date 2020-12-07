@@ -1,17 +1,36 @@
+<div class = "index-page-container">
+    <div>
+        <h1 id = 'Heading' >All Recipes</h1>
 
-<h1 id = 'Heading' >All Recipes</h1>
-
-
-<div class='index-container'>
-
-
-<% @recipes.each do |recipe|%>
-    <div class='index-tile'>
-    <%= link_to recipe.title, recipe_path(recipe) %> <br>
-    <img class = "index-img" src="<%= recipe.image%>" >
+        <div class = "form">
+            <h4>Search by Ingredient:</h4>
+            <%= form_tag(recipes_path, method: :get) do %>
+                <%= text_field_tag(:search) %>
+                <%= submit_tag ("Search"), class: "btn" %>
+            <% end %>
+        </div>
+        <div class="form">
+        <h4>Create New Recipe: </h4>
+            <%= form_tag(new_recipe_path, method: :get) do %>
+                <%= label_tag("Please enter number of ingredients") %>
+                <%= text_field_tag(:ingredient_count) %>
+                <%= submit_tag ("Create"), class: "btn" %>
+            <% end %>
+        </div>
     </div>
-<% end %>
-</div> 
+    <div class='index-container'>
+        <% @recipes.each do |recipe|%>
+        
+            <div class='index-tile'>
+            <%= link_to recipe.title, recipe_path(recipe) %> <br>
+            <%= link_to recipe_path(recipe) do %>
+                <img class = "index-img" src="<%= recipe.image%>">
+            <% end %>
+            </div>
+        
 
+        <% end %>
+    </div>
+</div> 
 
 

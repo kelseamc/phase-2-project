@@ -9,7 +9,7 @@
 <div class = "profile-container2">
 <h2> My Creations: <% @current_user.created_recipes.each do |recipe|%> </h2> 
     <img src="<%= recipe.image %>" width="250" height="300" > <br>
-    <li> <%= link_to recipe.title, recipe_path(recipe) %> <br> <br> <%=  button_to 'Edit', edit_recipe_path(recipe), method: :get, class: "button1" %>  <%=  button_to 'Delete', recipe_path(recipe), method: :delete, class: "button1"%>  </li>
+    <li> <%= link_to recipe.title, recipe_path(recipe) %> <br>  <%=  button_to 'Edit', edit_recipe_path(recipe), method: :get, class: "button1" %>  <%=  button_to 'Delete', recipe_path(recipe), method: :delete, class: "button1"%>  </li>
     <br>
     <br>
 <% end %>

@@ -17,9 +17,13 @@ RecipeIngredient.destroy_all
 User.create(name: Faker::Name.name, age: Faker::Number.within(range: 21..100), password_digest: Faker::Alphanumeric.alphanumeric(number: 10), image: Faker::Avatar.image)
 end
 
-20.times do 
-    Ingredient.create(name: Faker::Food.ingredient)
+api_resp_ingredients = RestClient.get("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list")
+api_data_ingredients = JSON.parse(api_resp_ingredients)
+
+api_data_ingredients["drinks"].each do |ing|
+        Ingredient.create(name: ing["strIngredient1"])
 end
+
 
 api_resp_cocktail = RestClient.get("https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail")
 api_data_cocktail = JSON.parse(api_resp_cocktail)
